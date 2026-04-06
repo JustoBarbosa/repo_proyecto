@@ -4,7 +4,7 @@ def calcular_tiempo_total(datos):
     en base a esto va a ser una suma total del tiempo que la usan todos los participantes del archivo enviado.
     
     Parametrs:
-        datos: diccionario. De este diccionario se obtienen los valores asociados a la clave tiempo de uso.
+        datos: Lista. De esta lista se obtienen los valores asociados a la clave tiempo de uso.
         En base a estos datos se calcula el total.
         
     Return:
@@ -26,7 +26,7 @@ def calcular_promedio_uso(datos):
     para determinar el promedio.
     
     Parameters:
-        datos: diccionario. Sobre los valores relacionados a la cantidad_uso se va a calcular cantidad total y\
+        datos: lista. Sobre los valores relacionados a la cantidad_uso se va a calcular cantidad total y\
         cantidad de registros asi se obtiene el promedio.
         
     Returns:
@@ -48,11 +48,11 @@ def calcular_promedio_uso(datos):
 
 def calcular_uso_por_app(datos):
     '''
-    Esta funcion va a ingresar al diccionario para tomar los datos de la app y la cantidad de uso\
+    Esta funcion va a ingresar a la lista para tomar los datos de la app y la cantidad de uso\
     y va a agregar en un diccionarion aparte los datos de las aplicaciones y la cantidad de uso de cada una.
     
     Parameters:
-        datos: diccionario. En base a estos datos se calcula la cantidad de uso de cada app.
+        datos: Lista. En base a estos datos se calcula la cantidad de uso de cada app.
         
     Returns:
         uso_por_app: diccionario. Este diccionario guarda como clave a la aplicacion y como valor la cantidad de uso de la misma.
