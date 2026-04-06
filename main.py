@@ -1,6 +1,6 @@
 from src.carga_datos import cargar_datos
 from src.metricas import calcular_tiempo_total, calcular_promedio_uso, calcular_uso_por_app
-# from src.validacion_datos import....
+from src.validacion_datos import validacion_datos
 from src.procesamiento_datos import filtrar_por_participante
 #lo de arriba es para que lo complete quien hizo esa funcion
 
