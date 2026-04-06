@@ -1,7 +1,20 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Apr  4 16:24:52 2026
+def validar_registro(registro):
+    '''
+    la funcion valida que los datos ingresados sean correctos 
+    Parameters
+    ----------
+    registro : diccionario
+        es un diccionario que contiene los datos de las personas
 
-@author: justo
-"""
-print("prueba")
+    Returns
+    -------
+    registro : diccionario 
+        devuelve un diccionario con los datos ya validados.
+
+    '''
+    while (registro != int or registro != float) and (registro <0):
+        print ("tiene que ser un numero float o int positivo")
+        registro= input("Ingrese registro ")
+        continue
+        return registro
+      
