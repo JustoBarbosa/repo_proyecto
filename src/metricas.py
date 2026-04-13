@@ -15,8 +15,9 @@ def calcular_tiempo_total(datos):
     
     for participantes in datos:
         for tiempo in participantes["tiempo_uso"]:
+            if tiempo < 0:
+                raise ValueError("Tiempo negativo encontrado: ", tiempo)
             total = total + tiempo
-    
     return total
 
 def calcular_promedio_uso(datos):
@@ -38,11 +39,13 @@ def calcular_promedio_uso(datos):
     
     for participante in datos:
         for cantidad in participante["cantidad_uso"]:
+            if cantidad < 0:
+                raise ValueError("Cantidad menor a 0")
             total_uso += cantidad
             total_registros += 1
             
     if total_registros == 0:
-        return 0.0
+        raise ValueError("No se puede dividir por 0")
     
     return total_uso / total_registros
 
@@ -63,6 +66,8 @@ def calcular_uso_por_app(datos):
         for i in range(len(participante["app"])):
             app = participante["app"][i]
             tiempo = participante["cantidad_uso"][i]
+            if tiempo < 0:
+                raise ValueError("tiempo menor a 0")
             if app not in uso_por_app:
                 uso_por_app[app] = 0
             uso_por_app[app] += tiempo

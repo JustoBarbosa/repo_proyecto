@@ -1,13 +1,18 @@
 from src.carga_datos import cargar_datos
 from src.metricas import calcular_tiempo_total, calcular_promedio_uso, calcular_uso_por_app
-from src.validacion_datos import validacion_datos
+from src.validacion_datos import validar_registro
 from src.procesamiento_datos import filtrar_por_participante
+import sys
 #lo de arriba es para que lo complete quien hizo esa funcion
 
-ruta_datos = "datos/datos_proyecto.csv"
+ruta_datos = r"datos/BehaviorTracker_mock_data.csv"
 
 #cargar datos desde el archivo
-datos = cargar_datos(ruta_datos)
+try:
+    datos = cargar_datos(ruta_datos)
+except FileNotFoundError:
+    print("Archivo no encontrado, posible ruta incorrecta")
+    sys.exit()
 
 #filtrar datos validos 
 
@@ -26,11 +31,15 @@ participante = filtrar_por_participante (datos, id_buscado)
 
 
 #calcular resultados 
-tiempo_total = calcular_tiempo_total(participante)
-promedio = calcular_promedio_uso(participante)
-uso_apps = calcular_uso_por_app(participante)
-
-print("tiempo total de uso: ", tiempo_total)
-print("promedio de uso: ", promedio)
-print("Uso por app: ", uso_apps)
+try:
+    tiempo_total = calcular_tiempo_total(participante)
+    promedio = calcular_promedio_uso(participante)
+    uso_apps = calcular_uso_por_app(participante)
+except ValueError as e:
+    print("error al calcular metricas: ", e)
+    sys.exit()
+else:
+    print("tiempo total de uso: ", tiempo_total)
+    print("promedio de uso: ", promedio)
+    print("Uso por app: ", uso_apps)
 
