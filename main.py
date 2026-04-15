@@ -15,6 +15,13 @@ except FileNotFoundError:
     sys.exit()
 
 #filtrar datos validos 
+try: 
+    validar = validar_registro(datos)
+except ValueError as e:
+    print("Hay un error en los tipos de datos del registo", e)
+    sys.exit()
+else:
+    print("Los datos son válidos")
 
 #elegir el participante 
 try: 
@@ -41,4 +48,5 @@ else:
     print("tiempo total de uso: ", tiempo_total)
     print("promedio de uso: ", promedio)
     print("Uso por app: ", uso_apps)
+
 
