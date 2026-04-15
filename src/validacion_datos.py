@@ -59,9 +59,5 @@ def validar_registro(registro):
         
         
         
-    while (registro != int or registro != float) and (registro <0):
-        print ("tiene que ser un numero float o int positivo")
-        registro= input("Ingrese registro ")
-        continue
-        return registro
+   
       
