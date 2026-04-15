@@ -30,7 +30,7 @@ except ValueError:
         print("Error: debe ingresar un ID válido (un número)")
 
 try: 
-    participante = filtrar_por_participante (datos, id_buscado)
+    participante = filtrar_por_participante (validar, id_buscado)
 except ValueError as e: 
     print (e)
     sys.exit()
