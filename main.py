@@ -17,17 +17,16 @@ except FileNotFoundError:
 #filtrar datos validos 
 
 #elegir el participante 
-while True: 
-    id_buscado = input("ingrese el id del participante: ")
-    
-    if id_buscado.isdigit(): 
-        id_buscado = int(id_buscado)
-        break
-    else:
-        print("error, debe ingresar un ID válido")
+try: 
+    id_buscado = int(input("ingrese el id del participante: "))
+except ValueError:
+        print("Error: debe ingresar un ID válido (un número)")
 
-participante = filtrar_por_participante (datos, id_buscado)
-
+try: 
+    participante = filtrar_por_participante (datos, id_buscado)
+except ValueError as e: 
+    print (e)
+    sys.exit()
 
 
 #calcular resultados 
