@@ -6,6 +6,15 @@ import sys
 #lo de arriba es para que lo complete quien hizo esa funcion
 
 ruta_datos = r"datos/BehaviorTracker_mock_data.csv"
+error1 = "datos/BehaviorTracker_mock_dataerror01.csv"
+error2= "datos/BehaviorTracker_mock_dataerror02.csv"
+error3 = "datos/BehaviorTracker_mock_dataerror03.csv"
+error4= "datos/BehaviorTracker_mock_dataerror04.csv"
+error6= "datos/BehaviorTracker_mock_dataerror06.csv"
+error7= "datos/BehaviorTracker_mock_dataerror07.csv"
+error8 = "datos/BehaviorTracker_mock_dataerror08.csv"
+error9= "datos/BehaviorTracker_mock_dataerror09.csv"
+error10 = "datos/BehaviorTracker_mock_dataerror10.csv"
 
 #cargar datos desde el archivo
 try:
