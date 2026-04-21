@@ -24,26 +24,27 @@ def validar_registro(registro):
         cant_uso = i ["cantidad_uso"]
         tiempo_uso = i ["tiempo_uso"]
         
-        try:
-            int(participante)
-        except ValueError:
+        if participante <= 0:
             raise ValueError (f'Error, el ID: {participante}, no es un numero valido')
         
-        try: 
-            int(cant_uso)
-        except ValueError:
-            raise ValueError (f'Error, la cantidad de uso {cant_uso}, no es un numero valido')
-        
-        try: 
-            float(tiempo_uso)
-        except ValueError:
-            raise ValueError (f'Error, el tiempo de uso {tiempo_uso}, no es un numero valido')
+        for cantidad in cant_uso:
+            try: 
+                int(cantidad)
+            except (ValueError, TypeError):
+                raise ValueError (f'Error, la cantidad de uso {cant_uso}, no es un numero valido')
+            if cantidad < 0:
+                raise ValueError(f"cantidad de uso negativa {cantidad}")
             
-        if fecha != str: 
-                raise ValueError ("La fecha es incorrecta")
-                
-        if fecha != str: 
-            raise ValueError ("La fecha es incorrecta")
+            for tiempo in tiempo_uso:
+                try: 
+                    float(tiempo)
+                except (ValueError, TypeError):
+                    raise ValueError (f'Error, el tiempo de uso {tiempo_uso}, no es un numero valido')
+                if tiempo < 0:
+                    raise ValueError(f"Error tiempo de uso negativo {tiempo}")
+        
+        if not fecha:
+            raise ValueError(f"Fecha vacia para participante {participante}")
                 
     
     return registro
