@@ -1,1 +1,5 @@
 .DS_Store
+src/__pycache__/carga_datos.cpython-312.pyc
+src/__pycache__/metricas.cpython-312.pyc
+src/__pycache__/procesamiento_datos.cpython-312.pyc
+src/__pycache__/validacion_datos.cpython-312.pyc
