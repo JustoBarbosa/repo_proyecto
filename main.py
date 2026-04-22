@@ -33,9 +33,11 @@ else:
     print("Los datos son válidos")
 
 #elegir el participante 
-try: 
-    id_buscado = int(input("ingrese el id del participante: "))
-except ValueError:
+while True: 
+    try:
+        id_buscado = int(input("ingrese el id del participante: "))
+        break
+    except ValueError:
         print("Error: debe ingresar un ID válido (un número)")
 
 try: 
