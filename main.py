@@ -18,7 +18,7 @@ error10 = "datos/BehaviorTracker_mock_data_error10.csv"
 
 #cargar datos desde el archivo
 try:
-    datos = cargar_datos(error10)
+    datos = cargar_datos(ruta_datos)
 except FileNotFoundError:
     print("Archivo no encontrado, posible ruta incorrecta")
     sys.exit()
