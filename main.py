@@ -18,7 +18,7 @@ error10 = "datos/BehaviorTracker_mock_data_error10.csv"
 
 #cargar datos desde el archivo
 try:
-    datos = cargar_datos(ruta_datos)
+    datos = cargar_datos(error10)
 except FileNotFoundError:
     print("Archivo no encontrado, posible ruta incorrecta")
     sys.exit()
@@ -27,7 +27,7 @@ except FileNotFoundError:
 try: 
     validar = validar_registro(datos)
 except ValueError as e:
-    print("Hay un error en los tipos de datos del registo", e)
+    print(e)
     sys.exit()
 else:
     print("Los datos son válidos")
