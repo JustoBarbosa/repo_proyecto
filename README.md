@@ -20,5 +20,15 @@ Objetos:
 En nuestro trabajo se podrían aplicar objetos en diferentes partes, como lo son:
 
 * Las funciones de parsear\_datos y cargar\_datos: ambas funciones utilizadas en el mismo archivo de phyton utilizan mismas variables que se repiten en cada uno de los try para poder evaluar esos datos y formar la base de lo que se analizan en las posterior funciones. En este caso se podría crear una clase que involucre ambas funciones y un init que defina estos datos que se repiten a lo largo de ambas funciones. Es decir, en el archivo "cargar\_datos.py" se va a incluir una clase que sea datos, donde se definen los datos repetidos y se los llama con la ayuda del self. Los métodos utilizados son los ya creados y definidos como parsear\_datos y cargar\_datos.
-* En validación\_datos.py: se definen los datos obtenidos del archivo pero la repetición se da a lo largo de todo el manejo de errores, podría verse facilitado con la aplicación de objetos. La clase podría definir las variables y luego aplicar como método a la función de "validar\_registro" que involucra condicionales y ciclos definidos para el manejo de errores. 
+* En validación\_datos.py: se definen los datos obtenidos del archivo pero la repetición se da a lo largo de todo el manejo de errores, podría verse facilitado con la aplicación de objetos. La clase podría definir las variables y luego aplicar como método a la función de "validar\_registro" que involucra condicionales y ciclos definidos para el manejo de errores.
+
+
+
+Pandas:
+
+El uso de pandas podría darse al incorporar archivos de tipo DataFrame que incluyan los datos posibles para poder llevar a cabo este proyecto. 
+
+* Primero que nada se aplicaría en el main una entrada donde no se acceda a archivos separados sino mas bien a uno que obtenga todos los datos necesarios y luego a partir del llamado de las diferentes funciones se modifique el DataFrame para manipular las series y acceder a los datos.  
+* En el caso del archivo de cargar\_datos.py que incluye las funciones de cargar\_datos y parsear\_datos en vez de separar los datos del archivo se podría llamar a las series donde se incluyan los datos y se podría acceder mediante los métodos loc e iloc para su llamado o manipulación. 
+* Luego en el caso en los que se calculan promedios y tiempos totales hay datos a los que se puede acceder más fácilmente con el uso de series o en el caso de necesitar datos específicos se puede usar el método de filtrado donde el llamado a una serie de datos se le aplica un condicional que excluye esos datos que no cumplen (se pueden usar métodos como .isin(), .count(), .mean(), y muchos más). 
 
