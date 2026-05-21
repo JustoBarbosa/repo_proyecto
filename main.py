@@ -3,6 +3,7 @@ from src.metricas import calcular_tiempo_total, calcular_promedio_uso, calcular_
 from src.validacion_datos import validar_registro
 from src.procesamiento_datos import filtrar_por_participante
 import sys
+import pandas as pd
 #lo de arriba es para que lo complete quien hizo esa funcion
 
 ruta_datos = r"datos/BehaviorTracker_mock_data.csv"
@@ -16,9 +17,11 @@ error8 = "datos/BehaviorTracker_mock_data_error08.csv"
 error9= "datos/BehaviorTracker_mock_data_error09.csv"
 error10 = "datos/BehaviorTracker_mock_data_error10.csv"
 
+df = pd.read_csv(ruta_datos)
+
 #cargar datos desde el archivo
 try:
-    datos = cargar_datos(ruta_datos)
+    datos = cargar_datos(df)
 except FileNotFoundError:
     print("Archivo no encontrado, posible ruta incorrecta")
     sys.exit()
