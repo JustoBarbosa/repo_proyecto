@@ -3,8 +3,12 @@ from src.metricas import calcular_tiempo_total, calcular_promedio_uso, calcular_
 from src.validacion_datos import validar_registro
 from src.procesamiento_datos import filtrar_por_participante
 import sys
+import os
 import pandas as pd
+import matplotlib.pyplot as plt
 #lo de arriba es para que lo complete quien hizo esa funcion
+
+
 
 ruta_datos = r"datos/BehaviorTracker_mock_data.csv"
 error1 = "datos/BehaviorTracker_mock_data_error01.csv"
@@ -17,11 +21,11 @@ error8 = "datos/BehaviorTracker_mock_data_error08.csv"
 error9= "datos/BehaviorTracker_mock_data_error09.csv"
 error10 = "datos/BehaviorTracker_mock_data_error10.csv"
 
-df = pd.read_csv(ruta_datos)
+
 
 #cargar datos desde el archivo
 try:
-    datos = cargar_datos(df)
+    datos = cargar_datos(ruta_datos)
 except FileNotFoundError:
     print("Archivo no encontrado, posible ruta incorrecta")
     sys.exit()
@@ -63,4 +67,16 @@ else:
     print("promedio de uso: ", promedio)
     print("Uso por app: ", uso_apps)
 
+#grafico 1: barras - uso por app
+uso_apps.plot(kind="bar")
+plt.title(f"uso por aplicacion - participante {id_buscado}")
+plt.tight_layout()
+plt.savefig("graficos/uso_por_app.png")
+plt.close()
 
+#grafico 2: lineas - evolucion del tiempo de uso
+participante["tiempo_uso"].plot(kind = "line")
+plt.title(f"evolucion del tiempo de uso - participante {id_buscado}")
+plt.tight_layout()
+plt.savefig("graficos/evolucion_tiempo.png")
+plt.close()

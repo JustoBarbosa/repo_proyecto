@@ -1,53 +1,39 @@
-def validar_registro(registro):
+import pandas as pd
+
+def validar_registro(df):
     '''
     la funcion valida que los datos ingresados sean correctos 
     Parameters
     ----------
-    registro : lista
-        es un lista que contiene los datos de las personas
+    registro : df
+        es un dataframe que contiene los datos de las personas
 
     Returns
     -------
-    registro : lista
+    registro : dataframe
         devuelve un lista con los datos ya validados.
+    raises:
+        ValueError: Si se detecta algun dato invalido
 
     '''
-    
-     
-    if len(registro) == 0 :
-        raise ValueError("La lista de registros esta vacia")
-    
-    for i in registro: 
-        participante = i["id_participante"] 
-        fecha =i["fecha"]
-        aplicacion = i ["app"]
-        cant_uso = i ["cantidad_uso"]
-        tiempo_uso = i ["tiempo_uso"]
+    if df.empty:
+        raise ValueError("el DataFrame esta vacio")
         
-        if participante <= 0:
-            raise ValueError (f'Error, el ID: {participante}, no es un numero valido')
+    if df.isna().any().any():
+        raise ValueError("Error: el archivo contiene campos vacios o valores nulos")
         
-        for cantidad in cant_uso:
-            try: 
-                int(cantidad)
-            except (ValueError, TypeError):
-                raise ValueError (f'Error, la cantidad de uso {cant_uso}, no es un numero valido')
-            if cantidad < 0:
-                raise ValueError(f"cantidad de uso negativa {cantidad}")
-            
-            for tiempo in tiempo_uso:
-                try: 
-                    float(tiempo)
-                except (ValueError, TypeError):
-                    raise ValueError (f'Error, el tiempo de uso {tiempo_uso}, no es un numero valido')
-                if tiempo < 0:
-                    raise ValueError(f"Error tiempo de uso negativo {tiempo}")
-        
-        if not fecha:
-            raise ValueError(f"Fecha vacia para participante {participante}")
-                
+    if (df["id_participante"] <= 0).any():
+        raise ValueError("Error: se encontraron IDs menores o iguales a 0.")
     
-    return registro
+    if (df["cantidad_uso"] < 0).any():
+        raise ValueError("Error: se encontraron valores negativos en cantidad_uso")
+    
+    if (df["tiempo_uso"] < 0).any():
+        raise ValueError("Error: se encontraron valores negativos en tiempo_uso")
+         
+    
+    
+    return df
         
         
             

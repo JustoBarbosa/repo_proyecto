@@ -1,26 +1,23 @@
-def calcular_tiempo_total(datos):
+def calcular_tiempo_total(df):
     '''
     Esta funcion va a tomar los datos relacionados al tiempo de uso de cada participante\
     en base a esto va a ser una suma total del tiempo que la usan todos los participantes del archivo enviado.
     
     Parametrs:
-        datos: Lista. De esta lista se obtienen los valores asociados a la clave tiempo de uso.
+        datos: df. De este dataframe se obtienen los valores asociados a la clave tiempo de uso.
         En base a estos datos se calcula el total.
         
     Return:
-        total: int. Se devuelve el tiempo total de uso. 
+        total: float. Se devuelve el tiempo total de uso. 
     '''
 
-    total = 0
+    if (df["tiempo_uso"] < 0).any():
+        raise ValueError("tiempo negativo encontrado")
     
-    for participantes in datos:
-        for tiempo in participantes["tiempo_uso"]:
-            if tiempo < 0:
-                raise ValueError("Tiempo negativo encontrado: ", tiempo)
-            total = total + tiempo
-    return total
+    
+    return df["tiempo_uso"].sum()
 
-def calcular_promedio_uso(datos):
+def calcular_promedio_uso(df):
     '''
     Esta funcion va a calcular el promedio de la cantidad de uso de cada app.\
     Se va a calcular la cantidad de registros y cuanto tiempo usa cada participante\
@@ -34,22 +31,14 @@ def calcular_promedio_uso(datos):
         total_uso/total_registros: es el promedio.
     '''
     
-    total_uso = 0
-    total_registros = 0
+    if (df["cantidad_uso"] < 0).any():
+        raise ValueError("cantidad de uso negativa encontrada")
+    if df.empty:
+        raise ValueError("No se puede calcular promedio: DataFrame vacio")
     
-    for participante in datos:
-        for cantidad in participante["cantidad_uso"]:
-            if cantidad < 0:
-                raise ValueError("Cantidad menor a 0")
-            total_uso += cantidad
-            total_registros += 1
-            
-    if total_registros == 0:
-        raise ValueError("No se puede dividir por 0")
-    
-    return total_uso / total_registros
+    return df["cantidad_uso"].mean
 
-def calcular_uso_por_app(datos):
+def calcular_uso_por_app(df):
     '''
     Esta funcion va a ingresar a la lista para tomar los datos de la app y la cantidad de uso\
     y va a agregar en un diccionarion aparte los datos de las aplicaciones y la cantidad de uso de cada una.
@@ -60,17 +49,8 @@ def calcular_uso_por_app(datos):
     Returns:
         uso_por_app: diccionario. Este diccionario guarda como clave a la aplicacion y como valor la cantidad de uso de la misma.
     '''
-    uso_por_app = {}
+    if (df["cantidad_uso"]< 0).any():
+        raise ValueError("Cantidad de uso negativa encontrada")
     
-    for participante in datos:
-        for i in range(len(participante["app"])):
-            app = participante["app"][i]
-            tiempo = participante["cantidad_uso"][i]
-            if tiempo < 0:
-                raise ValueError("tiempo menor a 0")
-            if app not in uso_por_app:
-                uso_por_app[app] = 0
-            uso_por_app[app] += tiempo
-    
-    return uso_por_app
+    return df.groupby("app")["cantidad_uso"].sum()
             

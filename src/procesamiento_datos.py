@@ -1,4 +1,4 @@
-def filtrar_por_participante (datos, id_participante): 
+def filtrar_por_participante (df, id_participante): 
   
     """
     Recorre una lista con los datos de todos los participantes, donde cada participante es un diccionario. 
@@ -14,14 +14,10 @@ def filtrar_por_participante (datos, id_participante):
         participante(lista): una lista con los datos del participante seleccionado 
     """
    
-    participante = []
-    for participantes in datos: 
-        if participantes["id_participante"] == id_participante: 
-            participante.append(participantes)
+    participante = df[df["id_participante"] == id_participante]
     
-    if len(participante)  == 0: 
-         raise ValueError (f"El id ingresado ({id_participante}) no existe")
-    else:
-         return participante         
+    if participante.empty:
+        raise ValueError(f"El id ingresado ({id_participante}) no existe")
+    return participante         
     
 
