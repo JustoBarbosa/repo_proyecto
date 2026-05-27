@@ -1,17 +1,19 @@
 def filtrar_por_participante (df, id_participante): 
   
     """
-    Recorre una lista con los datos de todos los participantes, donde cada participante es un diccionario. 
-    Si el id del participante coincide con el id del parametro de la funcion, agrega a dicho participante a una lista y la devuelve.  
+    Recibe un DataFrame y lo filtra para obtener todos los registros de un participante especifico. 
     
     Parametros:
         
-        datos(lista): es una lista de diccionarios, donde cada diccionario son los datos de cada participante.
+        df: DataFrame con los datos de uso. Debe contener la columna id_participante
         id_participante(int): es el numero de identificacion del participante del que se quieren saber los datos
         
     Retorna: 
         
-        participante(lista): una lista con los datos del participante seleccionado 
+        DataFrame: DataFrame con todas las filas correspondientes al participante indicado.
+    
+    Raises: 
+        ValueError: si el id ingresado no existe en el DataFrame
     """
    
     participante = df[df["id_participante"] == id_participante]
