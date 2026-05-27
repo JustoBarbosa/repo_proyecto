@@ -4,7 +4,7 @@ def calcular_tiempo_total(df):
     en base a esto va a ser una suma total del tiempo que la usan todos los participantes del archivo enviado.
     
     Parametrs:
-        df: Dataframe. De este dataframe se obtienen los valores asociados a la clave tiempo de uso.
+        df (Dataframe): De este dataframe se obtienen los valores asociados a la clave tiempo de uso.
         En base a estos datos se calcula el total.
         
     Return:

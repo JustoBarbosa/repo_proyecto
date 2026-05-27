@@ -2,16 +2,13 @@ import pandas as pd
 
 def validar_registro(df):
     '''
-    la funcion valida que los datos ingresados sean correctos 
-    Parameters
-    ----------
-    registro : df
-        es un dataframe que contiene los datos de las personas
+    Valida que el DataFrame contenga los datos correctos y completos. 
+    
+    Parameters:
+        df (DataFrame): DataFrame con los datos de uso.
 
-    Returns
-    -------
-    registro : dataframe
-        devuelve un lista con los datos ya validados.
+    Returns:
+        DataFrame: el mismo DataFrame de entrada si pasa todas las validaciones.
     raises:
         ValueError: Si se detecta algun dato invalido
 

@@ -13,7 +13,7 @@ def cargar_datos(ruta):
     Return:
         DataFrame: DataFrame con columnas id_participante, fecha, app, cantidad_uso, tiempo_uso
     Raises:
-        Filenotfounderror: Si el archivo no existe en la ruta indicada
+        FileNotFoundError: Si el archivo no existe en la ruta indicada
     '''
     if not os.path.exists(ruta):
         raise FileNotFoundError(f"no se encotró el archivo en la ruta {ruta}")
