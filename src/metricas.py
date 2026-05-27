@@ -4,11 +4,11 @@ def calcular_tiempo_total(df):
     en base a esto va a ser una suma total del tiempo que la usan todos los participantes del archivo enviado.
     
     Parametrs:
-        datos: df. De este dataframe se obtienen los valores asociados a la clave tiempo de uso.
+        df: Dataframe. De este dataframe se obtienen los valores asociados a la clave tiempo de uso.
         En base a estos datos se calcula el total.
         
     Return:
-        total: float. Se devuelve el tiempo total de uso. 
+        Float: Suma total de la columna tiempo_uso 
     '''
 
     if (df["tiempo_uso"] < 0).any():
@@ -19,16 +19,13 @@ def calcular_tiempo_total(df):
 
 def calcular_promedio_uso(df):
     '''
-    Esta funcion va a calcular el promedio de la cantidad de uso de cada app.\
-    Se va a calcular la cantidad de registros y cuanto tiempo usa cada participante\
-    para determinar el promedio.
+    Calcula el promedio de la cantidad de uso de cada app.
     
     Parameters:
-        datos: lista. Sobre los valores relacionados a la cantidad_uso se va a calcular cantidad total y\
-        cantidad de registros asi se obtiene el promedio.
+        df: Dataframe con los datos de uso. Debe contener la columna cantidad_uso
         
     Returns:
-        total_uso/total_registros: es el promedio.
+        float: promedio de la columna cantidad_uso
     '''
     
     if (df["cantidad_uso"] < 0).any():
@@ -36,18 +33,17 @@ def calcular_promedio_uso(df):
     if df.empty:
         raise ValueError("No se puede calcular promedio: DataFrame vacio")
     
-    return df["cantidad_uso"].mean
+    return df["cantidad_uso"].mean()
 
 def calcular_uso_por_app(df):
     '''
-    Esta funcion va a ingresar a la lista para tomar los datos de la app y la cantidad de uso\
-    y va a agregar en un diccionarion aparte los datos de las aplicaciones y la cantidad de uso de cada una.
+    Calcula la cantidad de uso agrupada por aplicacion.
     
     Parameters:
-        datos: Lista. En base a estos datos se calcula la cantidad de uso de cada app.
+        df: DataFrame con los datos de uso. Debe contener la columna cantidad_uso y app.
         
     Returns:
-        uso_por_app: diccionario. Este diccionario guarda como clave a la aplicacion y como valor la cantidad de uso de la misma.
+        Serie: una serie con el nombre de cada app con la suma total de cantidad_uso de cada una
     '''
     if (df["cantidad_uso"]< 0).any():
         raise ValueError("Cantidad de uso negativa encontrada")
