@@ -1,0 +1,27 @@
+Necesito que actúes como un desarrollador experto en Streamlit y diseño de interfaces web con Python. Vas a ayudarnos a construir el frontend de nuestro proyecto.
+
+Hola, necesito tu ayuda para construir la interfaz web de un proyecto que ya tenemos casi terminado. Somos estudiantes y venimos trabajando en un sistema de análisis de uso de aplicaciones móviles llamado BehaviorTracker. Ya tenemos todo el backend andando en módulos separados. Lo que nos falta es armar un dashboard con Streamlit (un archivo app.py) que use esas funciones sin modificarlas. Te explico cómo están hechas:
+
+cargar_datos(ruta) (está en carga_datos.py): Recibe la ruta a un archivo CSV y devuelve un DataFrame con estas columnas: id_participante, fecha, app, cantidad_uso, tiempo_uso.
+
+validar_registro(df) (está en validacion_datos.py): Revisa que los datos estén bien. Si algo está mal, lanza un ValueError con el mensaje de error.
+
+filtrar_por_participante(df, id) (está en procesamiento_datos.py): Filtra el DataFrame y devuelve solo las filas del participante que le pasás.
+
+En metricas.py hay tres funciones:
+  - calcular_tiempo_total(df): devuelve la suma de tiempo_uso
+  - calcular_promedio_uso(df): devuelve el promedio de cantidad_uso
+  - calcular_uso_por_app(df): agrupa por app y suma cantidad_uso,
+    devuelve una Serie de pandas
+
+Necesitamos que el dashboard haga esto en orden:
+
+Primero, que el usuario pueda subir el archivo CSV desde la pantalla con un st.file_uploader. Tiene en cuenta que cargar_datos() espera una ruta de archivo, no un objeto de Streamlit, así que vas a necesitar guardar lo que sube el usuario en un archivo temporal y pasarle esa ruta.
+
+Después, que se llame a validar_registro(). Si el archivo tiene algún problema, que se muestre el mensaje de error con st.error() y se corte ahí con st.stop(). No queremos que el resto del dashboard siga cargando si los datos son inválidos.
+
+Si todo está bien, que aparezca un st.selectbox con los IDs que hay en el dataset para que el usuario elija el participante a analizar.
+
+Luego tres tarjetas con st.metric mostrando: el tiempo total de uso, el promedio de cantidad de uso, y cuántas apps distintas usó.
+
+Y finalmente dos gráficos con st.pyplot(), uno al lado del otro con st.columns(): uno de barras con el uso por app, y uno de líneas con la evolución del tiempo de uso a lo largo del tiempo.
