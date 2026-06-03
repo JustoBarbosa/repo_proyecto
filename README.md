@@ -32,3 +32,11 @@ El uso de pandas podría darse al incorporar archivos de tipo DataFrame que incl
 * En el caso del archivo de cargar\_datos.py que incluye las funciones de cargar\_datos y parsear\_datos en vez de separar los datos del archivo se podría llamar a las series donde se incluyan los datos y se podría acceder mediante los métodos loc e iloc para su llamado o manipulación. 
 * Luego en el caso en los que se calculan promedios y tiempos totales hay datos a los que se puede acceder más fácilmente con el uso de series o en el caso de necesitar datos específicos se puede usar el método de filtrado donde el llamado a una serie de datos se le aplica un condicional que excluye esos datos que no cumplen (se pueden usar métodos como .isin(), .count(), .mean(), y muchos más). 
 
+Streamlit: 
+
+Para correr el dashboard interactivo: 
+1. Abrí una terminal e instala Streamlit con el siguiente comando: pip install streamlit. 
+2. Navegá hasta la carpeta raíz del proyecto (cd ruta/a/repo_proyecto). 
+3. Ejecutá: streamlit run app.py
+4. Se va a abrir el dashboard en una pestaña en el navegador
+
